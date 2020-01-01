@@ -1,4 +1,4 @@
-function [ Q, R ] = CGS( A )
+function [ Q, R ] = MGS( A )
 
   [ m, n ] = size( A );    % extract sizes of A
   Q = zeros( m, n );       % create a matrix in which to compute Q
@@ -9,7 +9,7 @@ function [ Q, R ] = CGS( A )
 
   [ QL, QR ] = FLA_Part_1x2( Q, ...
                                0, 'FLA_LEFT' );
-
+                           
   [ RTL, RTR, ...
     RBL, RBR ] = FLA_Part_2x2( R, ...
                                0, 0, 'FLA_TL' );
@@ -29,13 +29,10 @@ function [ Q, R ] = CGS( A )
                                                   1, 1, 'FLA_BR' );
 
     %------------------------------------------------------------%
-
+    
     r01 = Q0' * a1;
-    
     a1perp = a1 - Q0 * r01;
-    
     rho11 = norm( a1perp );
-    
     q1 = a1perp / rho11;
 
     %------------------------------------------------------------%

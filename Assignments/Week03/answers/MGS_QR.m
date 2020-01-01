@@ -1,15 +1,11 @@
 function [ Q, R ] = MGS( A )
 
   [ m, n ] = size( A );    % extract sizes of A
-  Q = zeros( m, n );       % create a matrix in which to compute Q
   R = zeros( n, n );       % create a matrix in which to compute R
   
   [ AL, AR ] = FLA_Part_1x2( A, ...
                                0, 'FLA_LEFT' );
 
-  [ QL, QR ] = FLA_Part_1x2( Q, ...
-                               0, 'FLA_LEFT' );
-                           
   [ RTL, RTR, ...
     RBL, RBR ] = FLA_Part_2x2( R, ...
                                0, 0, 'FLA_TL' );
@@ -17,9 +13,6 @@ function [ Q, R ] = MGS( A )
   while ( size( AL, 2 ) < size( A, 2 ) )
 
     [ A0, a1, A2 ]= FLA_Repart_1x2_to_1x3( AL, AR, ...
-                                         1, 'FLA_RIGHT' );
-
-    [ Q0, q1, Q2 ]= FLA_Repart_1x2_to_1x3( QL, QR, ...
                                          1, 'FLA_RIGHT' );
 
     [ R00,  r01,   R02,  ...
@@ -30,14 +23,14 @@ function [ Q, R ] = MGS( A )
 
     %------------------------------------------------------------%
     
-    
+    rho11 = norm( a1 );
+    a1 = a1 / rho11;
+    r12t = a1' * A2;
+    A2 = A2 - a1 * r12t;
 
     %------------------------------------------------------------%
 
     [ AL, AR ] = FLA_Cont_with_1x3_to_1x2( A0, a1, A2, ...
-                                           'FLA_LEFT' );
-
-    [ QL, QR ] = FLA_Cont_with_1x3_to_1x2( Q0, q1, Q2, ...
                                            'FLA_LEFT' );
 
     [ RTL, RTR, ...
@@ -48,7 +41,7 @@ function [ Q, R ] = MGS( A )
 
   end
 
-  Q = [ QL, QR ];
+  Q = [ AL, AR ];
 
   R = [ RTL, RTR
         RBL, RBR ];

@@ -1,4 +1,4 @@
-function [ A_out ] = FormQ_unb( A, t )
+function [ A_out ] = FormQ( A, t )
 
 % Partitioning A and t is a bit tricky.  They should start in the
 % configuration in which HQR finished, because in forming Q we run
@@ -13,7 +13,7 @@ function [ A_out ] = FormQ_unb( A, t )
 
   [ tT, ...
     tB ] = FLA_Part_2x1( t, ...
-                         n, 'FLA_TO' );
+                         n, 'FLA_TOP' );
 
   while ( size( ABR, 1 ) < size( A, 1 ) )
 

@@ -19,7 +19,7 @@ A_out
 [ A_out_QR, t_out_QR ] = HQR( A' );
 
 disp( 'A_out_QR computed by HQR' );
-A_out
+A_out_QR
 
 disp( 'Report difference (should be the zero matrix)' )
 A_out - A_out_QR'

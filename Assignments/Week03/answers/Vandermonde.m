@@ -3,7 +3,7 @@ close all
 
 m = 5000;
     
-% Generate a m x n Vandenmonde matrix
+% Generate a m x n Vandermonde matrix
 for n=2:10  
 	% Create a vector x with equally spaced entries in the interval [0,1]
 	x = zeros( m, 1 );
@@ -13,7 +13,7 @@ for i=2:m
         x( i ) = x( i-1 ) + h;
     end
 
-    % Create the Vandenmonde matrix
+    % Create the Vandermonde matrix
     X = zeros( m, n );
     
     % Set first column to ones
@@ -39,7 +39,7 @@ plot( x, X(:,4) );
 plot( x, X(:,5) );
 plot( x, X(:,6) );
 
-title('Basis functions for Vandenmonde matrix');
+title('Basis functions for Vandermonde matrix');
 legend( '1', 'x', 'x^2', 'x^3', 'x^4', 'x^5', 'Location','southeast');
 axis( [0,1,-0.2,1.2] );
 
@@ -53,4 +53,4 @@ semilogy( [1:n], kappa )
 title('Condition number');
 xlabel( 'n' );
 ylabel( '\kappa( X )' );
-legend( 'Vandenmonde', 'Location', 'northwest')
+legend( 'Vandermonde', 'Location', 'northwest')

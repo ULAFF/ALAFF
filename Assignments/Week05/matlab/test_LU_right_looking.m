@@ -1,7 +1,7 @@
 n = 5
 
 % Create a unit lower triangular matrix L with random strictly lower
-% trianguilar entries
+% triangular entries
 L = tril( ( rand( n, n ) * 2 - 1 ), -1 ) + eye( n, n );
 
 % Create an upper triangular matrix that does not have a small entry along

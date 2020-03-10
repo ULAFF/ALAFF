@@ -1,4 +1,4 @@
-function [ Q, R ] = MGS( A )
+function [ Q, R ] = CGS_QR( A )
 
   [ m, n ] = size( A );    % extract sizes of A
   Q = zeros( m, n );       % create a matrix in which to compute Q

@@ -14,6 +14,8 @@ disp( A );
 disp( 'Every time the matrix is displayed, pick the i and j entry you want to zero' );
 disp( 'i = -1 means: leave the loop' );
 
+i = 1;
+
 while i ~= -1
     i = input( 'enter i:' );
     if i < 1 || i > m
